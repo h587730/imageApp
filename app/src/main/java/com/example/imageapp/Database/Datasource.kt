@@ -28,16 +28,16 @@ class Datasource : Application() {
 
     fun loadPersons(resources: Resources): MutableList<Person> {
         personList = mutableListOf(
-            Person("Example", BitmapFactory.decodeResource(resources,R.drawable.image1), false),
-            Person("Example", BitmapFactory.decodeResource(resources,R.drawable.image2), false),
-            Person("Example", BitmapFactory.decodeResource(resources,R.drawable.image3), false),
-            Person("Example", BitmapFactory.decodeResource(resources,R.drawable.image4), false),
-            Person("Example", BitmapFactory.decodeResource(resources,R.drawable.image5), false),
-            Person("Example", BitmapFactory.decodeResource(resources,R.drawable.image6), false),
-            Person("Example", BitmapFactory.decodeResource(resources,R.drawable.image7), false),
-            Person("Example", BitmapFactory.decodeResource(resources,R.drawable.image8), false),
-            Person("Example", BitmapFactory.decodeResource(resources,R.drawable.image9), false),
-            Person("Example", BitmapFactory.decodeResource(resources,R.drawable.image10), false)
+            Person("Example1", BitmapFactory.decodeResource(resources,R.drawable.image1), false),
+            Person("Example2", BitmapFactory.decodeResource(resources,R.drawable.image2), false),
+            Person("Example3", BitmapFactory.decodeResource(resources,R.drawable.image3), false),
+            Person("Example4", BitmapFactory.decodeResource(resources,R.drawable.image4), false),
+            Person("Example5", BitmapFactory.decodeResource(resources,R.drawable.image5), false),
+            Person("Example6", BitmapFactory.decodeResource(resources,R.drawable.image6), false),
+            Person("Example7", BitmapFactory.decodeResource(resources,R.drawable.image7), false),
+            Person("Example8", BitmapFactory.decodeResource(resources,R.drawable.image8), false),
+            Person("Example9", BitmapFactory.decodeResource(resources,R.drawable.image9), false),
+            Person("Example10", BitmapFactory.decodeResource(resources,R.drawable.image10), false)
         )
         return personList
     }

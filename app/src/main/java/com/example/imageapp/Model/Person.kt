@@ -5,8 +5,8 @@ import java.io.Serializable
 
 data class Person(
     val name: String,
-   @Transient val image: Bitmap,
-    val isCorrect: Boolean
+    @Transient val image: Bitmap,
+    var isCorrect: Boolean
 ) : Serializable
 
 
