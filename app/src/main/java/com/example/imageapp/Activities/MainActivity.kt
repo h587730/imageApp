@@ -21,7 +21,6 @@ private const val TAG3 = "PersonRecieved"
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var personList: MutableList<Person>
     private lateinit var adapter: PersonAdapter
     private var ADD_REQ: Int = 42
     private var QUIZ_REQ: Int = 43
