@@ -68,6 +68,8 @@ class QuizActivity : AppCompatActivity() {
             total++
             tvAttemptsX.text = total.toString()
             Log.i(TAG1, "total: ${total},score: ${score}")
+            finish()
+            startActivity(this.intent)
         }
 
         btnAlt2.setOnClickListener{
@@ -79,6 +81,8 @@ class QuizActivity : AppCompatActivity() {
             total++
             tvAttemptsX.text = total.toString()
             Log.i(TAG1, "total: ${total},score: ${score}")
+            finish()
+            startActivity(this.intent)
         }
 
         btnAlt3.setOnClickListener{
@@ -90,6 +94,8 @@ class QuizActivity : AppCompatActivity() {
             total++
             tvAttemptsX.text = total.toString()
             Log.i(TAG1, "total: ${total},score: ${score}")
+            finish()
+            startActivity(this.intent)
         }
 
 
