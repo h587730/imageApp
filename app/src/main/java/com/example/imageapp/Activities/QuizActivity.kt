@@ -131,6 +131,15 @@ class QuizActivity : AppCompatActivity() {
         Log.i(TAG1, "correct image: ${correctPerson.image}")
     }
 
+    private fun randomizeOrder(
+        correctPerson: Person,
+        wrongPerson1: Person,
+        wrongPerson2: Person) : MutableList<Person>{
+
+        val randomizedList : List<Person> = listOf(correctPerson, wrongPerson1, wrongPerson2)
+        return randomizedList.shuffled().toMutableList()
+    }
+
     private fun randomizeAndAssignButtons () {
         randomList = randomizeOrder(correctPerson, wrongPerson1, wrongPerson2)
 
@@ -143,14 +152,7 @@ class QuizActivity : AppCompatActivity() {
         Log.i(TAG1, "btnAlt1: ${btnAlt1.text}, btnAlt2: ${btnAlt2.text}, btnAlt3: ${btnAlt3.text}")
     }
 
-    private fun randomizeOrder(
-        correctPerson: Person,
-        wrongPerson1: Person,
-        wrongPerson2: Person) : MutableList<Person>{
 
-        val randomizedList : List<Person> = listOf(correctPerson, wrongPerson1, wrongPerson2)
-        return randomizedList.shuffled().toMutableList()
-    }
 
 
 
