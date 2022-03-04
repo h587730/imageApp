@@ -2,6 +2,7 @@ package com.example.imageapp.Activities
 
 import android.app.Activity
 import android.content.Intent
+import android.graphics.BitmapFactory
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -17,6 +18,7 @@ import com.example.imageapp.Model.Person
 private const val TAG1 = "onCreateOptionsMenu"
 private const val TAG2 = "onOptionsItemSelected"
 private const val TAG3 = "PersonRecieved"
+private const val TAG4 = "showNewList"
 
 
 class MainActivity : AppCompatActivity() {
@@ -76,9 +78,14 @@ class MainActivity : AppCompatActivity() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (requestCode == ADD_REQ && resultCode == Activity.RESULT_OK) {
-            val newPerson = data?.getSerializableExtra("person") as Person
-            Log.i(TAG3, "Person recieved")
+            //val newPerson = data?.getSerializableExtra("person") as Person
+            val name = data?.getStringExtra("name") as String
+            val imgBytes = data.getByteArrayExtra("imgBytes") as ByteArray
+            val img = BitmapFactory.decodeByteArray(imgBytes, 0, imgBytes.size)
+            val newPerson = Person(name, img, false)
             Datasource().addToPersonList(newPerson)
+            Log.i(TAG3, "Person recieved")
+            Log.i(TAG4, "${Datasource().getPersonList()}")
             //personList.add(newPerson)
             adapter.notifyDataSetChanged()
         }

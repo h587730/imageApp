@@ -1,7 +1,6 @@
 package com.example.imageapp.Activities
 
 import android.app.Activity
-import android.content.ContentValues.TAG
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.drawable.BitmapDrawable
@@ -10,15 +9,19 @@ import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
+
+
 import androidx.appcompat.app.AppCompatActivity
 import com.example.imageapp.Model.Person
 import com.example.imageapp.R
+import java.io.ByteArrayOutputStream
 
 private const val TAG1 = "openGalleryForImage"
 private const val TAG2 = "setOnClickListener"
 private const val TAG3 = "convertToBitmap"
 private const val TAG4 = "ImageReturned"
 private const val TAG5 = "PersonCreated"
+private const val TAG6 = "showIntent"
 
 class AddActivity : AppCompatActivity() {
 
@@ -26,6 +29,7 @@ class AddActivity : AppCompatActivity() {
     private lateinit var btnSelectImage: Button
     private lateinit var ivPreviewImage: ImageView
     private lateinit var etName: EditText
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,10 +51,16 @@ class AddActivity : AppCompatActivity() {
         btnSubmit.setOnClickListener {
             val name = etName.text.toString()
             val img = convertToBitmap(ivPreviewImage)
-            val newPerson = Person(name, img, false)
-            Log.i(TAG5, "Person created")
+
+            val stream = ByteArrayOutputStream()
+            img.compress(Bitmap.CompressFormat.JPEG, 100, stream)
+            val bytes = stream.toByteArray()
+
+            Log.i(TAG5, "Person created: $name, $bytes")
             val output = Intent()
-            output.putExtra("person", newPerson)
+            output.putExtra("name", name)
+            output.putExtra("imgBytes", bytes)
+            Log.i(TAG6, "$output")
             setResult(Activity.RESULT_OK, output)
             Log.i(TAG2, "person sent")
             finish()
@@ -77,7 +87,7 @@ class AddActivity : AppCompatActivity() {
 
 
     private fun convertToBitmap(imageView: ImageView): Bitmap {
-        val bm = (imageView.getDrawable() as BitmapDrawable).getBitmap()
+        val bm = (imageView.drawable as BitmapDrawable).bitmap
         Log.i(TAG3, "image converted")
         return bm
     }
