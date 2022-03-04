@@ -6,7 +6,6 @@ import android.os.Parcelable
 
 data class Person(
     val name: String?,
-    //@Transient val image: Bitmap,
     val image: Bitmap?,
     var isCorrect: Boolean
 ) : Parcelable {
